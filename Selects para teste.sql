@@ -1,8 +1,40 @@
--- Selects para teste
+-- Selects para teste // inserir algumas coisas no banco
 
--- Registrar um chamado:
-INSERT INTO Chamado (titulo, descricao, data_abertura, status_id, sla_id, tipo_servico_id, subtipo_id, solicitante_id, tecnico_id)
-VALUES ('Sistema com erro', 'Meu sistema está com erro quando tento abrir o aplicativo da empresa.', CURDATE(), 1, 1, 1, 1, 1, NULL);
+
+
+SELECT 
+    S.solicitante_id,
+    U.nome AS nome_usuario,
+    U.email,
+    E.nome AS empresa,
+    E.cnpj
+FROM Solicitante S
+JOIN Usuario U ON S.usuario_id = U.usuario_id
+JOIN EmpresaSolicitante E ON S.empresa_id = E.empresa_id;
+
+SELECT 
+    T.tecnico_id,
+    U.nome AS nome_usuario,
+    U.email,
+    C.nome AS cargo,
+    D.nome AS departamento,
+    A.descricao AS area_atuacao
+FROM Tecnico T
+JOIN Usuario U ON T.usuario_id = U.usuario_id
+JOIN Cargo C ON T.cargo_id = C.cargo_id
+JOIN Departamento D ON T.departamento_id = D.departamento_id
+JOIN AreaAtuacao A ON T.area_atuacao_id = A.area_atuacao_id;
+
+-- Verificar se João é solicitante
+SELECT * FROM Solicitante S
+JOIN Usuario U ON S.usuario_id = U.usuario_id
+WHERE U.nome = 'João Silva';
+
+-- Verificar se Fernanda é técnica
+SELECT * FROM Tecnico T
+JOIN Usuario U ON T.usuario_id = U.usuario_id
+WHERE U.nome = 'Fernanda Lima';
+
 
 
 -- Enviar um comentário:
@@ -139,7 +171,7 @@ SELECT palavra FROM PalavraChave WHERE base_id = 1;
 -- Selects para funções
 
 -- Listar a quantidade de chamados por empresa 
-SELECT QtdChamadosPorEmpresa(1) AS total_chamados_empresa1;
+SELECT QtdChamadosPorEmpresa(2) AS total_chamados_empresa1;
 
 -- tempo total de atividade por chamado
 SELECT TempoTotalAtividadePorChamado(1) AS tempo_total_minutos;

@@ -9,18 +9,19 @@ CALL FecharChamado(18);
 
 -- criando um chamado que deseja
 CALL CriarChamado(
-    'Erro na hora de clicar no botão',
-    'estou com um problema na hora de clicar no botão, ele fica dando erro',
-    2,         -- status_id (ex: 2 = Em espera, 1 = aberto, 3 = finalizado )
+    'O botão de atualizar parcelas não está funcionando!',
+    'quando clico no botão ele aparece um erro 404',
+    1,         -- status_id (ex: 2 = Em espera, 1 = aberto, 3 = finalizado )
     3,         -- sla_id (60min resposta / 240min solução)
     1,         -- tipo_servico_id (Manutenção)
     1,         -- subtipo_id (Reparo de impressora, por exemplo)
-    2,         -- solicitante_id (João Silva da empresa Tech Solutions)
-    1          -- tecnico_id (João Silva técnico)
+    1,         -- solicitante_id (João Silva da empresa Tech Solutions)
+	3          -- tecnico_id 
 );
+
 CALL FecharChamado(1);
 
-CALL AtualizarStatusChamado(1, 4, 'Chamado encerrado pelo técnico.');
+CALL AtualizarStatusChamado(34, 3, 'Fala joão, ajustei o botão para você');
 
 -- Removendo um chamado
 CALL RemoverChamado(18);

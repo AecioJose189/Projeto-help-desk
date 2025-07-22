@@ -67,12 +67,14 @@ INSERT INTO AreaAtuacao (descricao) VALUES ('Infraestrutura');
 
 INSERT INTO Tecnico (usuario_id, cargo_id, departamento_id, area_atuacao_id)
 VALUES (1, 1, 1, 1);
+INSERT INTO Tecnico (usuario_id, cargo_id, departamento_id, area_atuacao_id)
+VALUES (4, 1, 1, 1);
 
 -- Serviços e SLA
 INSERT INTO TipoServico (nome) VALUES ('Manutenção');
-INSERT INTO SubtipoServico (tipo_servico_id, nome) VALUES (1, 'Reparo de impressora');
+INSERT INTO SubtipoServico (tipo_servico_id, nome) VALUES (1, 'Reparo do sistema');
 
-INSERT INTO SLA (tempo_resposta, tempo_solucao) VALUES (60, 240);
+INSERT INTO SLA (tempo_resposta, tempo_solucao) VALUES (60, 240); -- Este pode ter ID 1
 INSERT INTO SLA (tempo_resposta, tempo_solucao) VALUES (30, 120); -- Este pode ter ID 2
 INSERT INTO SLA (tempo_resposta, tempo_solucao) VALUES (120, 480); -- Este pode ter ID 3
 
@@ -110,17 +112,14 @@ VALUES (1, 'Status alterado de Aberto para Em Atendimento.', NOW()),
 (4, 'Chamado encerrado com sucesso.', NOW());
 
 -- Auditoria
-
 INSERT INTO Auditoria (chamado_id, usuario_id, acao, data_acao)
 VALUES (1, 2, 'Atualizou status do chamado.', NOW());
 
 -- Log
-
 INSERT INTO LogAtividades (auditoria_id, descricao, data)
 VALUES (1, 'Troca de cabo de energia', NOW());
 
 -- Tempo de atividade
-
 INSERT INTO TempoAtividade (log_id, tempo_gasto)
 VALUES (1, 35); -- tempo em minutos
 
